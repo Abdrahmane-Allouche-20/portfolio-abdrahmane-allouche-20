@@ -10,11 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #000000;
-      --primary: #ff9633;
-      --secondary: #f3ff47;
-      --accent: #ff9633;
-      --text: #ffffff;
+      --bg-color: #000000;
+      --primary-color: #FF9633;
+      --secondary-color: #F3FF47;
+      --text-color: #FFFFFF;
+      --bg: var(--bg-color);
+      --primary: var(--primary-color);
+      --secondary: var(--secondary-color);
+      --accent: var(--primary-color);
+      --text: var(--text-color);
       --angle: 162deg;
       --surface: color-mix(in oklab, var(--bg) 82%, white 18%);
       --line: color-mix(in oklab, var(--text) 18%, transparent);
@@ -53,6 +57,27 @@
     }
     .mesh > * { position: relative; z-index: 1; }
     .scroll-mt-20 { scroll-margin-top: 5rem; }
+    .brand-action {
+      border: 1px solid color-mix(in oklab, var(--primary-color) 55%, transparent);
+      color: var(--text-color);
+      background: color-mix(in oklab, var(--primary-color) 22%, var(--surface));
+    }
+    .brand-action:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: color-mix(in oklab, var(--primary-color) 30%, var(--surface));
+    }
+    .menu-bar { background: var(--text-color); }
+    .contact-link {
+      border: 1px solid color-mix(in oklab, var(--primary-color) 40%, transparent);
+      background: color-mix(in oklab, var(--surface) 76%, transparent);
+      color: var(--text-color);
+    }
+    .contact-link:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: color-mix(in oklab, var(--primary-color) 16%, var(--surface));
+    }
   </style>
   <script>
     function handleNavClick(href) {
@@ -83,15 +108,15 @@
             <a href="#projects" onclick="handleNavClick('#projects'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">Projects</a>
             <a href="#contact" onclick="handleNavClick('#contact'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">Contact</a>
               <div class="border-l border-white/10 pl-4">
-                <a class="inline-flex items-center justify-center rounded-lg bg-white/10 px-4 py-2 text-xs font-semibold text-white hover:bg-white/20 transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/fl_attachment/v1774778728/portfolio/cvs/c1935a06f017446690986304b45b69d8" download>Download CV</a>
+                <a class="brand-action inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/fl_attachment/v1774778728/portfolio/cvs/c1935a06f017446690986304b45b69d8" download>Download CV</a>
               </div>
           </div>
 
           <div class="flex items-center gap-2">
             <button onclick="toggleMenu()" class="flex flex-col gap-1.5 p-1 md:hidden" aria-label="Toggle menu">
-              <div class="h-0.5 w-5 bg-white/80"></div>
-              <div class="h-0.5 w-5 bg-white/80"></div>
-              <div class="h-0.5 w-5 bg-white/80"></div>
+              <div class="menu-bar h-0.5 w-5"></div>
+              <div class="menu-bar h-0.5 w-5"></div>
+              <div class="menu-bar h-0.5 w-5"></div>
             </button>
           </div>
         </nav>
@@ -102,7 +127,7 @@
           <a href="#projects" onclick="handleNavClick('#projects'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">Projects</a>
           <a href="#contact" onclick="handleNavClick('#contact'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">Contact</a>
             <div class="border-t border-white/10 pt-3 mt-3">
-              <a class="flex items-center justify-center rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold text-white hover:bg-white/20 transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/fl_attachment/v1774778728/portfolio/cvs/c1935a06f017446690986304b45b69d8" download onclick="toggleMenu()">Download CV</a>
+              <a class="brand-action flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/fl_attachment/v1774778728/portfolio/cvs/c1935a06f017446690986304b45b69d8" download onclick="toggleMenu()">Download CV</a>
             </div>
         </div>
       </header>
@@ -190,14 +215,14 @@
         <article class="glass rounded-3xl p-6 sm:p-8">
           <p class="text-sm text-(--muted) mb-6">Open to collaborations, product roles, and freelance work.</p>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <a href="mailto:abdrahmaneallouche500@gmail.com" class="flex flex-col items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-4 text-center text-xs sm:text-sm font-semibold hover:border-white/60 hover:bg-white/20 transition-colors">
+              <a href="mailto:abdrahmaneallouche500@gmail.com" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
                 <span class="text-lg">✉</span>
                 <span class="line-clamp-2">abdrahmaneallouche500@gmail.com</span>
               </a>
 
               <span class="flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-4 py-4 text-xs sm:text-sm font-semibold text-(--muted)">LinkedIn unavailable</span>
 
-              <a href="https://github.com/Abdrahmane-Allouche-20" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-4 text-center text-xs sm:text-sm font-semibold hover:border-white/60 hover:bg-white/20 transition-colors">
+              <a href="https://github.com/Abdrahmane-Allouche-20" target="_blank" rel="noreferrer" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
                 <span class="text-lg">{ }</span>
                 <span>GitHub</span>
               </a>
