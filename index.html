@@ -78,6 +78,16 @@
       color: var(--primary-color);
       background: color-mix(in oklab, var(--primary-color) 16%, var(--surface));
     }
+    .secondary-action {
+      border: 1px solid color-mix(in oklab, var(--primary-color) 45%, transparent);
+      color: var(--text-color);
+      background: color-mix(in oklab, var(--surface) 80%, transparent);
+    }
+    .secondary-action:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: color-mix(in oklab, var(--primary-color) 16%, var(--surface));
+    }
   </style>
   <script>
     function handleNavClick(href) {
@@ -176,25 +186,25 @@
         <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">Featured Projects</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             <article data-project-card="1" class="group overflow-hidden rounded-3xl glass">
-              <div class="relative h-44 overflow-hidden">
-                  <img src="https://res.cloudinary.com/dyqxlq4ki/image/upload/v1774726558/portfolio/projects/4aa2a8d20d964d0b9b5b0d6f33e51743.png" alt="portfolio_builder_frontend" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              <div class="relative aspect-video overflow-hidden">
+                  <img src="https://res.cloudinary.com/dyqxlq4ki/image/upload/v1774726558/portfolio/projects/4aa2a8d20d964d0b9b5b0d6f33e51743.png" alt="portfolio_builder_frontend" class="h-full w-full bg-black/20 object-contain transition-transform duration-300 group-hover:scale-105" />
               </div>
               <div class="space-y-3 p-4">
-                <h3 class="text-base font-semibold">portfolio_builder_frontend</h3>
-                <p class="line-clamp-3 text-sm text-(--muted)"></p>
+                <h3 class="text-base font-semibold break-words">portfolio_builder_frontend</h3>
+                <p class="line-clamp-3 break-words text-sm text-(--muted)"></p>
                 <div class="flex flex-col gap-2 sm:flex-row">
-<a class="inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-xs font-semibold" style="border-color:var(--line);" href="https://github.com/Abdrahmane-Allouche-20/portfolio_builder_frontend" target="_blank" rel="noreferrer">Source</a>                </div>
+<a class="secondary-action inline-flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold transition-colors" href="https://github.com/Abdrahmane-Allouche-20/portfolio_builder_frontend" target="_blank" rel="noreferrer">Source</a>                </div>
               </div>
             </article>
             <article data-project-card="1" class="group overflow-hidden rounded-3xl glass">
-              <div class="relative h-44 overflow-hidden">
-                  <img src="https://res.cloudinary.com/dyqxlq4ki/image/upload/v1774726573/portfolio/projects/43fdf66696d74ac8845a53ad3c96734d.png" alt="SocShielddz" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              <div class="relative aspect-video overflow-hidden">
+                  <img src="https://res.cloudinary.com/dyqxlq4ki/image/upload/v1774726573/portfolio/projects/43fdf66696d74ac8845a53ad3c96734d.png" alt="SocShielddz" class="h-full w-full bg-black/20 object-contain transition-transform duration-300 group-hover:scale-105" />
               </div>
               <div class="space-y-3 p-4">
-                <h3 class="text-base font-semibold">SocShielddz</h3>
-                <p class="line-clamp-3 text-sm text-(--muted)"></p>
+                <h3 class="text-base font-semibold break-words">SocShielddz</h3>
+                <p class="line-clamp-3 break-words text-sm text-(--muted)"></p>
                 <div class="flex flex-col gap-2 sm:flex-row">
-<a class="inline-flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold text-white" style="background:var(--primary);" href="https://soc-shielddz.vercel.app" target="_blank" rel="noreferrer">Live Demo</a><a class="inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-xs font-semibold" style="border-color:var(--line);" href="https://github.com/Abdrahmane-Allouche-20/SocShielddz" target="_blank" rel="noreferrer">Source</a>                </div>
+<a class="inline-flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold text-white" style="background:var(--primary);" href="https://soc-shielddz.vercel.app" target="_blank" rel="noreferrer">Live Demo</a><a class="secondary-action inline-flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold transition-colors" href="https://github.com/Abdrahmane-Allouche-20/SocShielddz" target="_blank" rel="noreferrer">Source</a>                </div>
               </div>
             </article>
         </div>
@@ -217,7 +227,7 @@
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <a href="mailto:abdrahmaneallouche500@gmail.com" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
                 <span class="text-lg">✉</span>
-                <span class="line-clamp-2">abdrahmaneallouche500@gmail.com</span>
+                <span class="max-w-full break-all leading-tight">abdrahmaneallouche500@gmail.com</span>
               </a>
 
               <span class="flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-4 py-4 text-xs sm:text-sm font-semibold text-(--muted)">LinkedIn unavailable</span>
