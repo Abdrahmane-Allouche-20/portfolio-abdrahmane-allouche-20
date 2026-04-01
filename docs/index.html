@@ -12,7 +12,7 @@
     :root {
       --bg-color: #FFFFFF;
       --primary-color: #030849;
-      --secondary-color: #6CFF0A;
+      --secondary-color: #FFCA0A;
       --text-color: #000000;
       --bg: var(--bg-color);
       --primary: var(--primary-color);
@@ -84,9 +84,9 @@
 
           <div class="flex items-center gap-2">
             <button onclick="toggleMenu()" class="flex flex-col gap-1.5 p-1 md:hidden" aria-label="Toggle menu">
-              <div class="h-0.5 w-5 bg-(--text)"></div>
-              <div class="h-0.5 w-5 bg-(--text)"></div>
-              <div class="h-0.5 w-5 bg-(--text)"></div>
+              <div class="h-0.5 w-5" style="background-color: var(--text);"></div>
+              <div class="h-0.5 w-5" style="background-color: var(--text);"></div>
+              <div class="h-0.5 w-5" style="background-color: var(--text);"></div>
             </button>
           </div>
         </nav>
