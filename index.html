@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #FFFFFF;
@@ -16,78 +16,53 @@
       --text-color: #000000;
       --bg: var(--bg-color);
       --primary: var(--primary-color);
-      --secondary: var(--primary-color);
-      --accent: var(--primary-color);
+      --secondary: var(--secondary-color);
       --text: var(--text-color);
-      --angle: 94deg;
-      --surface: color-mix(in oklab, var(--bg) 82%, white 18%);
-      --line: color-mix(in oklab, var(--text) 18%, transparent);
+      --line: color-mix(in oklab, var(--text) 28%, transparent);
+      --panel: color-mix(in oklab, var(--bg) 86%, white 14%);
       --muted: color-mix(in oklab, var(--text) 70%, transparent);
     }
-    html, body { scroll-behavior: smooth; }
+    html, body { margin: 0; scroll-behavior: smooth; }
     body {
-      margin: 0;
       color: var(--text);
-      font-family: Manrope, system-ui, sans-serif;
+      font-family: Lora, Georgia, serif;
       background:
-        radial-gradient(45rem 30rem at 0% 0%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 70%),
-        radial-gradient(45rem 30rem at 100% 10%, color-mix(in oklab, var(--primary) 20%, transparent), transparent 72%),
-        linear-gradient(var(--angle), color-mix(in oklab, var(--primary) 16%, var(--bg)), var(--bg));
-      min-height: 100vh;
+        radial-gradient(circle at 8% 12%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 45%),
+        radial-gradient(circle at 88% 8%, color-mix(in oklab, var(--secondary) 16%, transparent), transparent 42%),
+        var(--bg);
     }
-    .glass {
-      background: color-mix(in oklab, var(--surface) 78%, transparent);
-      border: 1px solid color-mix(in oklab, var(--line) 80%, white 20%);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .v-title { font-family: "Playfair Display", Georgia, serif; }
+    .v-card {
+      background: color-mix(in oklab, var(--panel) 92%, transparent);
+      border: 1px solid var(--line);
     }
-    .mesh {
-      position: relative;
-      overflow: hidden;
+    .v-btn {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: color-mix(in oklab, var(--panel) 82%, transparent);
     }
-    .mesh::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 45%),
-        radial-gradient(circle at 80% 0%, color-mix(in oklab, var(--secondary) 30%, transparent), transparent 50%);
-      filter: blur(34px);
-      z-index: 0;
+    .v-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
     }
-    .mesh > * { position: relative; z-index: 1; }
-    .scroll-mt-20 { scroll-margin-top: 5rem; }
-    .brand-action {
-      border: 1px solid color-mix(in oklab, var(--primary-color) 55%, transparent);
-      color: var(--text-color);
-      background: color-mix(in oklab, var(--primary-color) 22%, var(--surface));
-    }
-    .brand-action:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-      background: color-mix(in oklab, var(--primary-color) 30%, var(--surface));
-    }
-    .menu-bar { background: var(--text-color); }
-    .contact-link {
-      border: 1px solid color-mix(in oklab, var(--primary-color) 40%, transparent);
-      background: color-mix(in oklab, var(--surface) 76%, transparent);
-      color: var(--text-color);
-    }
-    .contact-link:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-      background: color-mix(in oklab, var(--primary-color) 16%, var(--surface));
-    }
-    .secondary-action {
+    .v-brand-link {
       border: 1px solid color-mix(in oklab, var(--primary-color) 45%, transparent);
       color: var(--text-color);
-      background: color-mix(in oklab, var(--surface) 80%, transparent);
+      background: color-mix(in oklab, var(--panel) 82%, transparent);
     }
-    .secondary-action:hover {
+    .v-brand-link:hover {
       border-color: var(--primary-color);
       color: var(--primary-color);
-      background: color-mix(in oklab, var(--primary-color) 16%, var(--surface));
+      background: color-mix(in oklab, var(--primary-color) 16%, var(--panel));
     }
+    .v-text { color: var(--text); }
+    .v-muted { color: var(--muted); }
+    .v-primary { color: var(--primary); }
+    .v-border { border-color: var(--line); }
+    .v-panel-bg { background: color-mix(in oklab, var(--panel) 92%, transparent); }
+    .v-text-bg { background: var(--text); }
+    .v-bg-text { color: var(--bg); }
+    .v-hover-primary:hover { color: var(--primary); }
   </style>
   <script>
     function handleNavClick(href) {
@@ -108,148 +83,147 @@
 <body>
   <main class="px-4 py-8 sm:py-10">
     <div class="mx-auto w-full max-w-6xl">
-      <header class="fixed left-1/2 top-3 z-30 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 rounded-2xl glass px-3 py-3 shadow-2xl shadow-black/20 sm:w-[calc(100%-3rem)] sm:px-4">
+      <header class="sticky top-2 z-30 rounded-2xl border v-border v-panel-bg px-3 py-3 shadow-lg shadow-black/10 backdrop-blur sm:px-4">
         <nav class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em]">
-          <span class="min-w-0 flex-1 truncate">Abd Rahmane</span>
+          <span class="v-title min-w-0 flex-1 truncate v-text">Abd Rahmane</span>
 
-          <div class="hidden flex-1 items-center justify-center gap-4 md:flex">
-            <a href="#about" onclick="handleNavClick('#about'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">About</a>
-            <a href="#skills" onclick="handleNavClick('#skills'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">Skills</a>
-            <a href="#projects" onclick="handleNavClick('#projects'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">Projects</a>
-            <a href="#contact" onclick="handleNavClick('#contact'); return false;" class="text-(--muted) transition-colors hover:text-(--primary)">Contact</a>
+          <div class="hidden flex-1 items-center justify-center gap-6 md:flex">
+            <a href="#about" onclick="handleNavClick('#about'); return false;" class="v-muted transition-colors v-hover-primary">About</a>
+            <a href="#skills" onclick="handleNavClick('#skills'); return false;" class="v-muted transition-colors v-hover-primary">Skills</a>
+            <a href="#projects" onclick="handleNavClick('#projects'); return false;" class="v-muted transition-colors v-hover-primary">Projects</a>
+            <a href="#contact" onclick="handleNavClick('#contact'); return false;" class="v-muted transition-colors v-hover-primary">Contact</a>
           </div>
 
             <div class="ml-auto hidden md:block">
-              <a class="brand-action inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/v1775037196/portfolio/cvs/ba2e6cc43318413cb3a9a9049c8b27dc.pdf?fl_attachment" download target="_blank" rel="noreferrer">Download CV</a>
+              <a class="v-brand-link inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/v1775037196/portfolio/cvs/ba2e6cc43318413cb3a9a9049c8b27dc.pdf?fl_attachment" download target="_blank" rel="noreferrer">Download CV</a>
             </div>
 
           <div class="flex items-center gap-2">
             <button onclick="toggleMenu()" class="flex flex-col gap-1.5 p-1 md:hidden" aria-label="Toggle menu">
-              <div class="menu-bar h-0.5 w-5"></div>
-              <div class="menu-bar h-0.5 w-5"></div>
-              <div class="menu-bar h-0.5 w-5"></div>
+              <div class="h-0.5 w-5 v-text-bg"></div>
+              <div class="h-0.5 w-5 v-text-bg"></div>
+              <div class="h-0.5 w-5 v-text-bg"></div>
             </button>
           </div>
         </nav>
 
-        <div id="mobile-menu" class="hidden border-t border-white/10 pt-3 md:hidden">
-          <a href="#about" onclick="handleNavClick('#about'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">About</a>
-          <a href="#skills" onclick="handleNavClick('#skills'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">Skills</a>
-          <a href="#projects" onclick="handleNavClick('#projects'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">Projects</a>
-          <a href="#contact" onclick="handleNavClick('#contact'); toggleMenu(); return false;" class="block px-2 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--muted) hover:text-(--primary)">Contact</a>
-            <div class="border-t border-white/10 pt-3 mt-3">
-              <a class="brand-action flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/v1775037196/portfolio/cvs/ba2e6cc43318413cb3a9a9049c8b27dc.pdf?fl_attachment" download target="_blank" rel="noreferrer" onclick="toggleMenu()">Download CV</a>
+        <div id="mobile-menu" class="hidden border-t v-border pt-3 md:hidden">
+          <a href="#about" onclick="handleNavClick('#about'); toggleMenu(); return false;" class="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] v-muted v-hover-primary">About</a>
+          <a href="#skills" onclick="handleNavClick('#skills'); toggleMenu(); return false;" class="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] v-muted v-hover-primary">Skills</a>
+          <a href="#projects" onclick="handleNavClick('#projects'); toggleMenu(); return false;" class="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] v-muted v-hover-primary">Projects</a>
+          <a href="#contact" onclick="handleNavClick('#contact'); toggleMenu(); return false;" class="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] v-muted v-hover-primary">Contact</a>
+            <div class="border-t v-border pt-3 mt-3">
+              <a class="v-brand-link flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold transition-colors" href="https://res.cloudinary.com/dyqxlq4ki/raw/upload/v1775037196/portfolio/cvs/ba2e6cc43318413cb3a9a9049c8b27dc.pdf?fl_attachment" download target="_blank" rel="noreferrer" onclick="toggleMenu()">Download CV</a>
             </div>
         </div>
       </header>
-      <div class="h-24"></div>
 
-      <section id="about" class="mesh glass scroll-mt-20 rounded-3xl p-6 sm:p-8">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <img src="https://avatars.githubusercontent.com/u/175845199?v=4" alt="avatar" class="h-16 w-16 rounded-2xl object-cover sm:h-20 sm:w-20" />
-          <div>
-            <p class="text-xs uppercase tracking-[0.18em] text-(--muted)">Remote</p>
-            <h1 class="mt-2 text-2xl font-extrabold sm:text-4xl">Hi, I'm Abd Rahmane.</h1>
-            <p class="mt-3 max-w-3xl text-sm text-(--muted)">Hi there! I&#39;m Full-Stack Developer based in Algeria, passionate about building dynamic web experiences from front to back.</p>
+      <section id="about" class="v-card mt-6 rounded-2xl p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] v-muted">Remote</p>
+        <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <img class="h-16 w-16 rounded-full border v-border object-cover sm:h-20 sm:w-20" src="https://avatars.githubusercontent.com/u/175845199?v=4" alt="avatar" />
+          <div class="min-w-0">
+            <h1 class="v-title text-3xl font-bold sm:text-5xl">Abd Rahmane</h1>
+            <p class="mt-3 text-sm leading-relaxed v-muted sm:text-base">Hi there! I&#39;m Full-Stack Developer based in Algeria, passionate about building dynamic web experiences from front to back.</p>
           </div>
         </div>
       </section>
 
-      <section id="skills" class="mt-8 scroll-mt-20">
-        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">Tech Stack</h2>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <article class="glass rounded-2xl p-5">
-              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">Frontend</p>
+      <section id="skills" class="mt-8">
+        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] v-muted">Tech Stack</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="v-card rounded-2xl p-5">
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em] v-text">Frontend</p>
               <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">CSS</span>
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">JavaScript</span>
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">TypeScript</span>
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">react</span>
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">next js</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">CSS</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">JavaScript</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">TypeScript</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">react</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">next js</span>
               </div>
             </article>
-            <article class="glass rounded-2xl p-5">
-              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">Backend</p>
+            <article class="v-card rounded-2xl p-5">
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em] v-text">Backend</p>
               <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">Python</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">Python</span>
               </div>
             </article>
-            <article class="glass rounded-2xl p-5">
-              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">Tools</p>
+            <article class="v-card rounded-2xl p-5">
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em] v-text">Tools</p>
               <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full border border-white/35 bg-white/85 px-3 py-1.5 text-xs font-semibold text-zinc-900">Shell</span>
+                    <span class="rounded-md border v-border v-panel-bg px-3 py-1.5 text-xs font-semibold v-text">Shell</span>
               </div>
             </article>
         </div>
       </section>
 
-      <section id="projects" class="mt-8 scroll-mt-20">
-        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">Featured Projects</h2>
+      <section id="projects" class="mt-8">
+        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] v-muted">Featured Projects</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <article data-project-card="1" class="glass overflow-hidden rounded-2xl">
-              <div class="aspect-video overflow-hidden bg-(--panel)">
+            <article data-project-card="1" class="v-card overflow-hidden rounded-2xl">
+              <div class="aspect-video overflow-hidden v-panel-bg">
                 <img src="https://opengraph.githubassets.com/1/Abdrahmane-Allouche-20/employeeSystemManager" alt="employeeSystemManager" class="h-full w-full bg-black/20 object-cover" />
               </div>
               <div class="space-y-3 p-4">
-                <h3 class="text-base font-bold uppercase tracking-[0.02em] text-(--text) wrap-break-word">employeeSystemManager</h3>
-                <p class="text-sm text-(--muted) wrap-break-word"></p>
+                <h3 class="v-title text-lg font-semibold v-text wrap-break-word">employeeSystemManager</h3>
+                <p class="text-sm v-muted wrap-break-word"></p>
                 <div class="flex flex-col gap-2 sm:flex-row">
-<a class="inline-flex flex-1 items-center justify-center rounded-sm border-2 border-(--text) px-3 py-2 text-xs font-bold uppercase text-(--text)" href="https://github.com/Abdrahmane-Allouche-20/employeeSystemManager" target="_blank" rel="noreferrer">Source</a>                </div>
+<a class="v-btn inline-flex flex-1 items-center justify-center rounded-md px-3 py-2 text-xs font-semibold" href="https://github.com/Abdrahmane-Allouche-20/employeeSystemManager" target="_blank" rel="noreferrer">Source</a>                </div>
               </div>
             </article>
-            <article data-project-card="1" class="glass overflow-hidden rounded-2xl">
-              <div class="aspect-video overflow-hidden bg-(--panel)">
+            <article data-project-card="1" class="v-card overflow-hidden rounded-2xl">
+              <div class="aspect-video overflow-hidden v-panel-bg">
                 <img src="https://res.cloudinary.com/dyqxlq4ki/image/upload/v1775152631/portfolio/projects/3d1a575c93f14777a592bbd8d99d607e.jpg" alt="HajjLotteryFrontEnd" class="h-full w-full bg-black/20 object-cover" />
               </div>
               <div class="space-y-3 p-4">
-                <h3 class="text-base font-bold uppercase tracking-[0.02em] text-(--text) wrap-break-word">HajjLotteryFrontEnd</h3>
-                <p class="text-sm text-(--muted) wrap-break-word">The HajjLottery Frontend is a responsive React app that allows users to register for a Hajj lottery and lets admins manage users and registrations. It features role-based access, a clean dashboard UI, and is styled with Tailwind CSS. Admins can view, filter, and delete users or entries, while users can register and track their status.</p>
+                <h3 class="v-title text-lg font-semibold v-text wrap-break-word">HajjLotteryFrontEnd</h3>
+                <p class="text-sm v-muted wrap-break-word">The HajjLottery Frontend is a responsive React app that allows users to register for a Hajj lottery and lets admins manage users and registrations. It features role-based access, a clean dashboard UI, and is styled with Tailwind CSS. Admins can view, filter, and delete users or entries, while users can register and track their status.</p>
                 <div class="flex flex-col gap-2 sm:flex-row">
-<a class="inline-flex flex-1 items-center justify-center rounded-sm border-2 border-(--text) px-3 py-2 text-xs font-bold uppercase text-(--text)" href="https://github.com/Abdrahmane-Allouche-20/HajjLotteryFrontEnd" target="_blank" rel="noreferrer">Source</a>                </div>
+<a class="v-btn inline-flex flex-1 items-center justify-center rounded-md px-3 py-2 text-xs font-semibold" href="https://github.com/Abdrahmane-Allouche-20/HajjLotteryFrontEnd" target="_blank" rel="noreferrer">Source</a>                </div>
               </div>
             </article>
         </div>
       </section>
 
         <section class="mt-8">
-          <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">Certifications</h2>
+          <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] v-muted">Certifications</h2>
           <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <article data-cert-card="1" class="glass rounded-2xl p-4">
+              <article data-cert-card="1" class="v-card rounded-2xl p-4">
                 <div class="flex items-start gap-3">
-                  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAKgAtAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAACBQYBB//EAD0QAAIBAwICBgYIBQQDAAAAAAECAwAEERIhMUEFEyJRUmEUMnGRobEjQlNigcHR8IKSouHxFUNysiRjk//EABoBAAIDAQEAAAAAAAAAAAAAAAIDAAEEBQb/xAAvEQACAgEDAwIEBQUBAAAAAAAAAQIDEQQSITFBURMUIkJSoQUyYYGRscHR8PEz/9oADAMBAAIRAxEAPwDktFelKc6gkgDiaMLNtJ1LXcbR5rEjLK1AtNNFpYgV4IvFxqcEcmLla800yyVUx1YOWAxVtO1E0UXq8qBUJuFNNTTTcduzkjuoZjwxXuqBbmA01MUVkrzTV4K3AyK8ohFEjiDbnhVMilgCsWuirEiDtcau0ijsryoTdreoXlsjPnZeAoLmrtVCKplxAtVStGK1UrVDUwOmppoumppqi8gsVKJpqVMF5O2tbLLZ08Kl2q7rWwy9TgaeOaXlKOe1WVSy8mlxWMGEll1jZqk9ppNdOojhiPmKz541lajjY8iZUrBh+jbUGSHTW5PBpXFJXEG1NU8medWFwZix5OKvGvb0Yz5CnTbpHAC/fRoFtoMhxFLHJhuBLKPbjbiKuU8Erpcnyw3R8cEUUjXUcmO4LnT7az7oxSlmhg6pM4BznPwp62t426x5WeMb9kAt79vnScuCSEGVB2alVxW9vJpvm1TGOEl9zPlj3qqxZ2PCneodztxp2CwVSGl44rQ2kYIpsyltvEdK+dSfAAVNsc++tG5iZm0xcKq1qIU1n1udVuRbizKEDHtVV107U5NqbOr1eWeFLstGgUxYrVStMFaoVqglIDivNNFIqaage4CFqFaPo2qjCqwRSAYqUXFSpgPcfS71etgEi8Vb4Ef2NYtzqiOquliXfq3XaQFfx5fEfGsbpSPqjKlYapc4N10eMiFrfMrb8OdaNxLAIVkT1jXPTO+rUq6OXq8f3mrNds9vobiK0Spy0zHXqtqcWNSXWuTHdV2bUm4zSBilhk1FcHYHTuASMgZ78A+40wOtdBw/iq8R7FJzy1JYZ4sLXPqkM7NpEagktnuxR0hWxeWO6s5HBAyXjIZRnluMZ76Pa2DPE8oTIU6clsDJHnxp5+j5mRVlRnDjcncjy8hSZ2xXDZqo002t0Y8/Ywcl5G6kOkXJWIPyq6xNkVrf6fpGdOw2VaPa2y25Luv0h4Duo1ascCHRJS+IVt7UR/STetj4VdYOvfX6qDbUeFM9W0smT31Ll9C6eGOVBlthqKSF5FjjBWMZI4tWXd9psv8AhTznUCazbpt6dBcibZLAlNuaCVoz0Nq0Iw7ssCwqumm7ezluciMaV5ueFMS2kNupMhLaduz3n/B91C5Iak8ZM1YNW9eMmmmZrgYCxLp8hxofUs41t8ONTJMNi53OCSPYM16lvlgWMaqVLYZxvjkRnaiFdO1exQddnHVpj7VwufeRQy6DIcvGCvWMNlii8+wPlp2qU4sHR5VesvJUfG+IdYPnkke6pQbo+GO2T8r+UfQ5s6tQXSazumYkmhEq8xvW50kojVAzE7bBuXwrIk0yoVrm0yziR19TDGYs5eLo6W6n0KVCKdyWAOD7fZQWiFnO8UgWbbCup4b8R+AIwe+tS5hkQto76B0f0el5eJFKz9o7BF1E+fl7a6O7huT4OLsxKMYR+LPV9CiiFy2sOEyMGPG3fRrG0huOkDGsUssWQUydPPnx5U83RvWSKLKGQKNpEJBKY23xzOPfTvRsYsoXM5tlZoyYwzsGXOQRtz/CufKUUsVvnwdyO+c910Vjzg9h6PZZSNHVEeqpXIO/xp6GA28RjKqZG3YY4D8qYhtetjEstx1bkkJmXII8qDM6WzMpGZPEeFJcna8DoqNC3Yx+pSVFCZ06ccu6kJipOBx5VeabEee80qpYsTWyutpHMuuU2M6kij+8RWZM2qQ0aV96WlkfBxTowwZp2IFLIi51cazJmLMStPrCdRZ6DOEiOqXTj98qfHCMU90xDSx3r3qdEXWOjMudOfqg92aduJoHgBEnVxjs+rwpa1s1uZlWNmZmIIUnAzROZaoecFZbq4YIqqVRfDt+VCWJiPp3KRk5ZmJKryztv7q2D0YkbJDLcQx611ZyfjgE/ge40HSqN9IwP3FXC4G3D+1JVsZflNUtNOP/AKcArSxtpVaXWwRc74wcDHDPt+HCmbpbXsLBCi9jcLqY57mLfMCiLGIxmVWcBNUad+eA8hxPDypuOfpO8TSY1lC7jUuSnduP0/Cs85y3J9TbXXBwccY/bLEL3o2B4UaEyPt6/qpnuH+aQWOW1MclugjlUH6RSS2T8v7+7ol6Pkih62WWKNVOCTg/Cg9J+jW0CyR3fpAfYhCFJ5440cbPl65FWU5zNLbhHPixurnMqQSSajux5mvKJJ0lPqPVpGqfVBTfFSn4t/QxZ0/dyO7aCQTFJ86hxzxoc1useSravPTXU3dkkrMzKVZvWYUqLF1iZMIy8d+NcX3KXQ9ItJu6nJTx5ycZxyo1taI9rHLH6DGI37UkzMCeGM4/f575sU6zVlQSMEHgKTl6MtUcsQc8lHOjWrjYtvQB6CVb3xaf2PI4riHrGZ4I7aTLvJEXjdmPdk5B9u21SSOAOskvSHpDL6oA1e3YY2Ow9mR50D0LdzFtEQNQDHenrfo8RRatLb8Ns1e2Ke7IEpzfwbf5FJbo9nQmiIYJiVAq6sY5fvHOgSoGbVLjA+qtaD2LA4wsfPLnFJzwfSMupezhdRO2/l3U+tw7GW1WP8wkVknf1dhsB3Cjx2bOOz6g40TQkWzEE9686cTsxEBcbZAHHHM0yU2lwKjWm+TKmtlU0rKiryzWpJC7uS2xBI9vnSs1syRF233zqGdxz8x+NFGxeQZUTxlIQjtpp3YRRO5VSxC8hVJbPrkjRWUuX2jCknu7sZ2rU6Mij9IRpmGnO+o6Rw7+VatxaNA6PbwJEGACkFmCnxajsO/zpN2pamoLuP02jTi5vqcb0tYXcLG3MQjCLk5jyQDsPxHGh21m6W3VSEyb8Wz6uf7fGu1AjvJNdxbhw40q0pO/sOBj3V4LRkk0xL1aqdQCLk8t/LgKTDVzXEkbZ6KuS+F4/qc/YdGBYZptCHRgBXViDx8Ps5miW1tcSBY42do1OQcnC+Yrfm9DhmSXqI5mAJ2bgdzkjhQLrpi1whgt+0pBBZuGPKr9WybbURXp1VJJz5X3/cXToqJMGaVXYklguSW7uQ+fOvOsjtdRgkEQIwdfEj40hc9KXD6gpKhj9WsW8kkdu2zVor08pfnZjv1sIc1xGulOlA4ZYndzxzjArBmZpDlmozLQmWuhCCisI49l0rHmQDFSrkb1KMXk+5iZJVCtse8VI4tzq3Xkavb2axjK8DTHVuuy8K8q8Z4PbKTQhPCWPDI5E0q9mH9b/tWz1QIw1UESpVYwGrBBej0CknhtVJoTskeoD8K0HlVaVnulbK6auG7PAEmn1Mm7hZY99Q3499Z0kDkErwrVnXLau+kpC6lgrNj3V0K20jn3Ri3kRjjw2QAx55puB3kAjUOoYAFkGcn9nvoZgY9o86JFE8WJFGQdqbLEkZ4Zix5EjdULMAWLbOSfb8qp1EbtOFGWcEkMvqDz2xzoUTuukJGuEHh5UXr3aaN2CgcM7bDn+/KscqmsnShqE0sijW9sHDSBUKHtRg7advdzFNWAnSPFrNpjbOlZJNQ9mMbH3V4yW6yt1avO53yNh+tXQrbkGVxJKPVRNwPaf0osOUP8ipSjGeVj9gkjCOBTPMTIm3UjYHfbhSX+oSKxAOiHmMZozhrlyWVye5eVHj6OjiCyz6A/EDiauMIQXPUqU7Zvh4RlXfR08+JoFIDd5x+NUHRsVsmueRJZPCRlRWredIErgLhV2G/7FczeXWvV2uJ+rwrRXvlx0Mt3pweerBdI3CBtMSjUOQ2ArJl1SnLU066qoUHMZFbY4ijm2KU2ItFQJIt66WDog9SJrsmBD6qt6zDvA5fjWdcRJ1raE0qNhmrVyb4KlpWllmP1TVK0eq+7UovUF+3PqsUc8igksp8yQMUXr2g2DM55k8KpbSs+NTdnlTDCI7My715ty55PW7eBJukZdRwtWTpBzs6UZrONvUr2OwwQe6j3QfYXtku57FLFP2WWRT57iim3jwaG8OjgceemoobI+kagb8B4Yjd2pLYUsue+lv8AT3ZgOtXetZ4dRzq+dU9GYnPa2o42yXBUqYS5FouhwB25R+ArySyjzpSTV54wKZnibA7VKOjDfuo1OUurF+nFdEQQLFssjE8wOFCkhEp1SMSBsAp/OrFv+R86E8jUcc5BljGMF2RdOkdkeEcTVAIo99PCgSStzpaSR89impCZNeB970oD1a6R31m3PSTnPVjUeZYbV4bWSQhmRmzVvQWzwRfaaNbELl6kjMmM1wcyMSOQHCqrZMwyV2rX9ERPXc/wrQ3ECctXto/W7IX7fuzN9Ch+vKo8uPyo0XUWxBgtxI431yjIHmBRZJh9SL+mhGWXkdI9oFTc31Iq1HoeOsk7F5dbHmzHFDTo7rSTnHxowubeEEy/+RLyA2ApS46RkkyqoqjkNzj31ScuiD2x6sbHR1sgxJKuqpWFJ2mJfcmpRbZeQdy+k76y6Qs5cvAysRtkNin4L21mTJOCDgld/fXF2XQHbbrw0ig5BTnjl308nQtjA2W1oRyLg4/AEGvPyvhnh5PRumPR9Tp5LqND9GdQ91Wi6QU4GdOa5xbC0iIaJpweYDY+dattPGIx2A2NuQPz3pfrvsDOmKXCyaurPa4550rMVz2HbVXqzl4dSRcDilZeuc7lVHtq3cxcIc8hNbAgsGbFPW86yDAVs1mdUBu82vHIUxDdFBpReNFC3nkKyGVwaBj1DNLSx5NGEjMnaOk14G7jqPOm7zOk0AFogGW50GW0j3xpzTMisxyeFV0Lg441fqtdAtifUznsvvLVPRYkIzx5U3KjHbV/VQvRcb6uPnV+4l5CVED1Ai7V4/o8XafTXjQ6Qe3WfdGJDtqlfuG1RW5fUJ1ccIvJNA0h6pd+XKlXtp3c6gsa8QdSn4ZrwMxOfRU/iZv1qphZ1KlI1yc53/WnLUKPcS9NKXVAWtY9P00kvEbqoOaDIlmn20v3ScfKnks7YbyyO2PqrUZLdWHV2px4map7tA+yfgyLgiQAJEsajkBv76AY62JtH+3AoPI7/rQD1vgj/lzTFq1gp6JmX1VStdUuSMjSB5KalV7wv2LGIOmQ27Qqn8YP5Vd+kkc4MukHuYYrEW0kG5Vv5aKtuwrjzcM8M7saU+WjZSWBv95D5D/NPRzxIn0CrIRyDgGucWL/AI0VIs7dnes0rVEuenTXLOmh6QL4V7Sf8GVvzopeFz2EdW9m3zrnorUnGF35U7D0ddqNSJ7mH60v3MnwkY50VxfEsD00EpyVKkD2/kDQVkW37ciybbnCP+agVdYLtAuu5iT7rOKbiWXH0s0LL93J/OiVkvApyS75FB03C3ZRRt9o+PlmmReRhBJcOI1PBVJP5UfTF5fw1MR8matEbZCpbH0QNbmGQZBZl5caFLcqoOmJvh+tFZYvrBjXmYPsl/E0W9vuEkl2E2u//W3w/WvOslb1VbHvp4TxL/tL8Kq10v2a/D9KvP6hqT7RESsr+KrLYyN9WmWvH+qq4oT3MnfipuDzN9sEXo5ufD8auOjU5t+/dQDcN9o1Ca4+9V7iKNj7jvoEXiX3/wBqo1jF4lpBp/vUJp1qZDVU/I69rEn+BQ/oEP8AikGmWhPc1a5D2SNT0qIbaalYpud6lXtRNgZb5V/2m/8Amw/KmI+kF2/8fV7z8K4dekpVY6LO3RTvtpUk/sUVulLp1x1Me3MSJ+hop/h0v9YxW0z/AOM7k9IH6sWj8FHzq63Ycdu5aLz1IfhiuAF5ft6kXxU/Jaagvulkxsqjl+8Viv8Aw25L4ZIiqhP8q+x31tK5IEfSF0wJ4pGCPlT0nR5kTrJLu4bnu2PliuGtumOlFI1sh9uf1rorXp91sWD28RbG+H/WssM1ZjqP25fUTfpLYtOP9hrCxsVWS4YD7z1U3mOzrO3ecn4msS76alkyFjCg90lZrXcpUrqO55uT+dZ6q9TPrwaK9DJ8s6hrxftflVGuv/Y381cv10v3aqZp/FW2Ons7s0LQrydM13j6zfGq+nLXMl5/F/Uarqn/AG1aI6eXdl+0ijqP9QX9tXh6Qrli9192ql7zxL/NTVpn5B9vBdjqGv2oTXjeKuYLX3jX40Njefar8aYtK/JWyC+VnTtd/e/qobXf3q5k+mfarQ2F59qtGtL+pN0V8rOla8XxUJ7371c0yXn2tUaK5+1pi0q8gO5L5TonvvvUBr5fFXPtDc/a1QwT/a0xaWPkW739Jum/XPrVK5/0eX7WpRe2j5A9aX0jatKN9Kj+GiCafx/HFSpXZdUPB5mOptXSQaOWQeE+ZJPzNMpcNz04qVKzzorfY3U669fMEE6/dq/Wrj1v6hUqVlnpavBvh+JX+SpkXl/2qpl/41KlXHTV+CT/ABG/yVMz/vFVM0vJqlSnLT1+DM9fe/mPDLP4qoZZ/E1SpV+jBdhMtdf9RQyz+JqqZJ/E1eVKYqYeBT1t31FTJP4mqpafxN/NUqUXpQ8A+6tfzFCZ/E381UPW+Jv5qlSo64+AXqbfJU9b4v6qqes8X9VeVKJVx8AvU2LuVJbxVUlvFUqUXpRB91Z5K5bxfOpUqVPSiT3Vnk//2Q==" alt="ok" class="h-12 w-12 rounded-lg bg-white object-cover shrink-0" />
+                  <img src="data:image/jpeg;base64,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" alt="ok" class="h-12 w-12 rounded bg-white object-cover shrink-0" />
                   <div class="min-w-0">
-                    <h3 class="text-sm font-semibold wrap-break-word">ok</h3>
-                    <p class="text-xs text-(--muted) wrap-break-word">ok</p>
-<p class="mt-1 text-xs text-(--muted)">Issued: 2026-03-26</p><p class="mt-2"><a href="ok" target="_blank" rel="noreferrer" class="text-xs font-semibold hover:underline" style="color:var(--primary);">Verify</a></p>                  </div>
+                    <h3 class="v-title text-sm font-semibold v-text wrap-break-word">ok</h3>
+                    <p class="text-xs v-muted wrap-break-word">ok</p>
+<p class="mt-1 text-xs v-muted">Issued: 2026-03-26</p><p class="mt-2"><a href="ok" target="_blank" rel="noreferrer" class="text-xs font-semibold v-primary hover:underline">Verify</a></p>                  </div>
                 </div>
               </article>
           </div>
         </section>
 
-      <section id="contact" class="mt-8 scroll-mt-20">
-        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">Get in Touch</h2>
-        <article class="glass rounded-3xl p-6 sm:p-8">
-          <p class="text-sm text-(--muted) mb-6">Open to collaborations, product roles, and freelance work.</p>
+      <section id="contact" class="mt-8">
+        <h2 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] v-muted">Connect</h2>
+        <div class="v-card rounded-2xl p-6 sm:p-8">
+          <p class="text-sm v-muted mb-6">Open to collaborations, product roles, and freelance work.</p>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <a href="mailto:ok" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
-                <span class="text-lg">✉</span>
+              <a href="mailto:ok" class="v-brand-link flex flex-col items-center justify-center rounded-md px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
+                <span class="text-lg mb-2">✉</span>
                 <span class="max-w-full break-all leading-tight">ok</span>
               </a>
 
-              <a href="https://ok" target="_blank" rel="noreferrer" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
-                <span class="text-lg">in</span>
+              <a href="https://ok" target="_blank" rel="noreferrer" class="v-brand-link flex flex-col items-center justify-center rounded-md px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
+                <span class="text-lg mb-2">in</span>
                 <span>LinkedIn</span>
               </a>
 
-              <a href="https://ok" target="_blank" rel="noreferrer" class="contact-link flex flex-col items-center justify-center gap-2 rounded-xl px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
-                <span class="text-lg">{ }</span>
+              <a href="https://ok" target="_blank" rel="noreferrer" class="v-brand-link flex flex-col items-center justify-center rounded-md px-4 py-4 text-center text-xs sm:text-sm font-semibold transition-colors">
+                <span class="text-lg mb-2">{ }</span>
                 <span>GitHub</span>
               </a>
           </div>
-        </article>
+        </div>
       </section>
 
-      <footer class="mt-8 border-t border-white/10 pt-6 pb-2 text-xs text-(--muted)">
+      <footer class="mt-8 border-t v-border pt-6 pb-2 text-xs v-muted">
         <p>&copy; Abd Rahmane. Built with Portfolio Builder.</p>
       </footer>
     </div>
